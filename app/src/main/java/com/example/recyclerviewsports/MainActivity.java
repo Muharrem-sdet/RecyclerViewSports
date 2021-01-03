@@ -3,15 +3,17 @@ package com.example.recyclerviewsports;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.Intent;
 import android.os.Bundle;
+
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private final ArrayList<Sport> sportList = new ArrayList<>();
     private RecyclerView recyclerView;
-    private final String EXTRA_SPORT = getResources().getString(R.string.extra_sport);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickSport(Sport sport) {
         Intent intent = new Intent(this, SportExplanationActivity.class);
-        intent.putExtra(EXTRA_SPORT, sport);
+        intent.putExtra("Extra_sport", sport);
         startActivity(intent);
     }
 

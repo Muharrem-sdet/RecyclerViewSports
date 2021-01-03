@@ -1,6 +1,7 @@
 package com.example.recyclerviewsports;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +15,6 @@ public class SportExplanationActivity extends AppCompatActivity {
     private TextView sportExplanation;
     private Sport sport;
     private final String LOG_TAG = "SportExplanation";
-    private final String EXTRA_SPORT = getResources().getString(R.string.extra_sport);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +26,12 @@ public class SportExplanationActivity extends AppCompatActivity {
         sportExplanation = findViewById(R.id.sport_explanation);
 
         Intent intent = getIntent();
-        sport = (Sport)intent.getSerializableExtra(EXTRA_SPORT);
+        sport = (Sport)intent.getSerializableExtra("Extra_sport");
 
         try {
-            sportTitle2.setText(sport.getSportTitle());
-            sportExplanation.setText(sport.getSportExplanation());
-            sportImage2.setImageResource(sport.getSportImageId());
+            sportTitle2.setText(sport.sportTitle);
+            sportExplanation.setText(sport.sportExplanation);
+            sportImage2.setImageResource(sport.sportImageId);
         } catch (Exception e) {
             Log.d(LOG_TAG, "Invalid sport or no sport retrieved from MainActivity");
         }
