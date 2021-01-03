@@ -3,17 +3,15 @@ package com.example.recyclerviewsports;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private final ArrayList<Sport> sportList = new ArrayList<>();
     private RecyclerView recyclerView;
+    private final String EXTRA_SPORT = getResources().getString(R.string.extra_sport);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,39 +21,19 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_view);
         populateSportList();
 
-//        MyOnClickSportAction myListenerAction = new MyOnClickSportAction() {
-//            @Override
-//            public void onClick(int position) {
-//                onClickSport(position);
-//            }
-//        };
-
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClickSport(v);
-            }
-        };
+        MyOnClickSportAction listener = sport -> onClickSport(sport);
 
         SportListAdapter adapter = new SportListAdapter(sportList, listener);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(linearLayoutManager);
-
     }
 
-//    public void onClickSport(int position) {
-//        Intent intent = new Intent(this, SportExplanationActivity.class);
-//        intent.putExtra("Extra_position", position);
-//        startActivity(intent);
-//    }
-
-        public void onClickSport(View v) {
+    public void onClickSport(Sport sport) {
         Intent intent = new Intent(this, SportExplanationActivity.class);
-        intent.putExtra("Extra_position", recyclerView.getChildAdapterPosition(v));
+        intent.putExtra(EXTRA_SPORT, sport);
         startActivity(intent);
     }
-
 
     public void populateSportList() {
         String[] sportTitle = getResources().getStringArray(R.array.sport_title);

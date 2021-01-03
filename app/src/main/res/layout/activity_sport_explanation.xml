@@ -15,38 +15,38 @@
             android:id="@+id/sport_image_2"
             android:layout_width="300dp"
             android:layout_height="300dp"
-            android:layout_margin="16dp"
+            android:layout_margin="64dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/swimming"/>
+            tools:src="@drawable/swimming" />
 
         <TextView
+            android:id="@+id/sport_title_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/sport_title_2"
-            tools:text="Swimming"
-            app:layout_constraintTop_toBottomOf="@id/sport_image_2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="16dp"
+            android:textAllCaps="true"
             android:textColor="@color/purple_700"
             android:textSize="28sp"
             android:textStyle="bold"
-            android:textAllCaps="true"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sport_image_2"
+            tools:text="Swimming" />
 
         <TextView
+            android:id="@+id/sport_explanation"
+            android:justificationMode="inter_word"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/sport_explanation"
-            tools:text="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-            app:layout_constraintTop_toBottomOf="@id/sport_title_2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_margin="16dp"
             android:textColor="@color/black"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sport_title_2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

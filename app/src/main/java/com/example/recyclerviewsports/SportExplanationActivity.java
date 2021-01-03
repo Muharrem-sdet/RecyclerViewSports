@@ -1,7 +1,6 @@
 package com.example.recyclerviewsports;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,8 +12,9 @@ public class SportExplanationActivity extends AppCompatActivity {
     private ImageView sportImage2;
     private TextView sportTitle2;
     private TextView sportExplanation;
-    private int position;
+    private Sport sport;
     private final String LOG_TAG = "SportExplanation";
+    private final String EXTRA_SPORT = getResources().getString(R.string.extra_sport);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,19 +26,14 @@ public class SportExplanationActivity extends AppCompatActivity {
         sportExplanation = findViewById(R.id.sport_explanation);
 
         Intent intent = getIntent();
-        position = intent.getIntExtra("Extra_position", -1);
+        sport = (Sport)intent.getSerializableExtra(EXTRA_SPORT);
 
-        if(position == -1){
-            Log.d(LOG_TAG, "Invalid position or no position");
-        } else{
-            String[] sportTitle = getResources().getStringArray(R.array.sport_title);
-            String[] sportExplanations = getResources().getStringArray(R.array.sport_explanation);
-            String[] sportImageName = getResources().getStringArray(R.array.sport_image_name);
-            sportTitle2.setText(sportTitle[position]);
-            sportExplanation.setText(sportExplanations[position]);
-            int imageId = getResources().getIdentifier(sportImageName[position], "drawable", getPackageName());
-            sportImage2.setImageResource(imageId);
+        try {
+            sportTitle2.setText(sport.getSportTitle());
+            sportExplanation.setText(sport.getSportExplanation());
+            sportImage2.setImageResource(sport.getSportImageId());
+        } catch (Exception e) {
+            Log.d(LOG_TAG, "Invalid sport or no sport retrieved from MainActivity");
         }
-
     }
 }
